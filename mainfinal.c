@@ -16,24 +16,38 @@ int main()
    set_screen_void(&screen,width,height);// setting screen
    
    
+   
+   
+   
    //init background 
    initialiser_background( &b);
+   //-------------------------------
    
-  // load_main_perso_p
+  // load_main_perso_p  hamma 
    initPerso(&p);
    initPerso(&p1);
-  
-   //Enemi_load  
-   initennemi( &es);
-   
-   es.pos_e.x=900; es.pos_e.y=300;
-   p.pos_p.x=1100;
-   
-   a[0]=es.image;
    p.pos_p.x=300;
+   p.pos_p.x=1100;
+   //-----------------------------
+  
+   //Enemi_load   seif 
+   initennemi( &es);
+   es.pos_e.x=900; es.pos_e.y=300;
+   a[0]=es.image;
+   //--------------------------------
+   
+   
+   
    while(c==1)
    {
+       //background et scrolling
+    //------------------------------------------------------------------
+   afficher_background(b,*screen);
+   scrolling2(&p,&b,1400,694);
    
+   
+   
+   //------------------------------------7amma teba3
     while(SDL_PollEvent(&event))
    {
       
@@ -166,36 +180,17 @@ int main()
    }  
    deplacer_perso(&p); 
    deplacer_perso(&p1); 
-   
-    
-   //------------------------------------------------------------------
-   afficher_background(b,*screen);
-   
-   scrolling2(&p,&b,1400,694);
-   
-   
-   
-   // perso
    afficherPerso( p, screen);
-
-   
    afficherPerso( p1, screen);
-
-   
-      
-   //****************************************************
-   
-   //ennemi
+   //----------------------------------------------hamma ends
+  
+  
+  
+   //*************************** seif 
    afficher_ennemi(es,screen);
    deplaceria( &es, p.pos_p );
    animer_ennemi( &es);
-  
-  
-  
-  
-   
-   
-   if ((collision_bb(p,es))== 1 )
+  if ((collision_bb(p,es))== 1 )
         {
           //b.pos_bg.x -= 900; no need for it scrolling do the job with perso only now 
           p.pos_p.x=0;
@@ -203,7 +198,17 @@ int main()
           p.pos_p.y=380; 
          // es.image=NULL;
         }  
-   //****************************************************
+   //----------------------------------seif ends 
+  
+  
+  
+   
+   
+   
+   
+   
+   
+   
    
    SDL_Delay(1000/60);
    SDL_Flip(screen);
