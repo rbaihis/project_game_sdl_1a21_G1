@@ -7,11 +7,6 @@
 #include <SDL/SDL_mixer.h>
 
 
-
-
-
-
-
 /** 
 * @struct enigme
 * @brief struct for enigme

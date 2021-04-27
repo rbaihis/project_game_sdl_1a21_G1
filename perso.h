@@ -39,7 +39,7 @@ typedef struct
 typedef struct 
     {
     
-	SDL_Surface * image[3][3];  /*!< Surface*/
+	SDL_Surface * image[3][3],*image1;  /*!< Surface*/
 	SDL_Rect    pos_p;           /*!< Rectangle*/
 	
 	vie        vie_perso ;
@@ -49,7 +49,7 @@ typedef struct
 	int        etat,gravite;       /// etat 1 en mvmnt 0 stable 
 	int        direction,num,up;/// direc: 0 droite 1 gauche 2 attq  "ligne"  
                                  ///num : numero de limage "colone"
-    
+        int        stop;
      }personne;
      
 

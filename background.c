@@ -3,7 +3,7 @@
 
 void initialiser_background( background * b)
 {
-   b->image=IMG_Load(" ");
+   b->image=IMG_Load("stage1.png");
    b->pos_bg.x=0;
    b->pos_bg.y=0;
    b->pos_bg.h=b->image->h;

@@ -9,11 +9,10 @@ void initennemi(ennemi *es)
 {
   es->image=IMG_Load("wizard_sheet_800_600.png" );
   
-  float a= es->image->w/3.0; //using float in case of error when dividing by int
-  float b= es->image->h/4.0;
+  float z=((float) es->image->w)/3; //using float in case of error when dividing by int
   
-  es->pos_e.w = (int) a;
-  es->pos_e.h = (int) b;
+  es->pos_e.w = (int) z;
+  es->pos_e.h = es->image->h/4;
   
   //i chose the comment those functions because ill be using them in optional function
  //es->pos_e.x= es->screenwidth-simple_es->pos_e.w; 
@@ -31,15 +30,19 @@ void initennemi(ennemi *es)
  
 }
 
-void afficher_ennemi2(ennemi * es, SDL_Surface * screen)
+
+void afficher_ennemi(ennemi es, SDL_Surface * screen)// cant make it work no return no pointer to pass !!!?????
 {
-    SDL_BlitSurface( es->image , &es->pos_s ,screen, &es->pos_e);
+ 
+    SDL_BlitSurface( es.image , &es.pos_s ,screen, &es.pos_e);
+          
 }
+
 
 
 void animer_ennemi( ennemi * es)
 {  
-   if(es->pos_s.x==800 - es->pos_s.w)
+   if(es->pos_s.x==600 - es->pos_s.w)
      es->pos_s.x=0; // image back to 0 to show first image in sheet
      else
        es->pos_s.x += es->pos_s.w; // move sprite cheet image forward 
@@ -110,6 +113,14 @@ void deplacer_ennemi( ennemi * es)
 
 
 
+int collision_bb( personne p, ennemi es)
+{
+  if( (p.pos_p.x + p.pos_p.w < es.pos_e.x) || ( p.pos_p.x > es.pos_e.x +es.pos_e.w)
+   || (p.pos_p.y + p.pos_p.h < es.pos_e.y) || ( p.pos_p.y > es.pos_e.y +es.pos_e.h)  )
+   return 0;
+     else
+       return 1; 
+}
 
 
 void deplaceria( ennemi * e, SDL_Rect pos_p )

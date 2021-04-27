@@ -45,7 +45,7 @@ void quit_event(SDL_Event *event , int * loop) // better used in void mode
           switch(event->key.keysym.sym)
            {
              case SDLK_ESCAPE : 
-             case SDLK_q: 
+             case SDLK_p: 
              *loop=0;  // quit current loop only 
               break ;
            } 

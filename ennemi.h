@@ -39,7 +39,7 @@ int collision;
 
 // *-*-*-*-Enemi_prototype_ES ---**-*-  
 void initennemi(ennemi *es);//ok****
-void afficher_ennemi(ennemi es, SDL_Surface * screen);//ok***
+void afficher_ennemi(ennemi  es, SDL_Surface * screen);//ok***
 void animer_ennemi( ennemi * es);//ok*****
 void deplacer_ennemi( ennemi * es);//ok****
 int collision_bb( personne p, ennemi es);//ok*****
