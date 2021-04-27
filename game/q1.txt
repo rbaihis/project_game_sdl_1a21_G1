@@ -1,0 +1,4 @@
+Quelle est la somme de deux faces opposées sur un dé?
+7
+8
+9
