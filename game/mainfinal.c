@@ -3,7 +3,7 @@
 #include "perso.h"
 #include "background.h"
 #include "enigme.h"
-
+#include "lot3.h"
 
 int main()
 {
@@ -14,7 +14,12 @@ int main()
    
    c=init_sdl();
    set_screen_void(&screen,width,height);// setting screen
-   
+   /// declaration des variables -->fedi
+  /* int redimensionnement=30,continuer=1,collision,temps=0,tempsActuel=0, tempsPrecedent=0 ;
+	minimap m;
+	Personne p;
+   SDL_Color couleurblanc = {255, 255, 255},couleurNoire = {0, 0, 0};
+	char time[20]="";*/
    
    //init background 
    initialiser_background( &b);
