@@ -1,22 +1,8 @@
-/** 
-* @file enigme.c
-* @brief testing
-* @author volta
-* @version 0.1 
-* @date Apr 20, 2021  
-*/
+
 
 #include "header.h"
+#include "enigme.h"
 
-
-
-
-/** 
-* @brief To generate enigme
-* @param ch chaine 
-* @param n2 entier alea
-* @return enigme 
-*/ 
 
 enigme generer(char *ch,enigme e,SDL_Surface *screen,int *n2)
 {int i=0;

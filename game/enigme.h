@@ -1,6 +1,10 @@
 #ifndef ENIGME_H_INCLUDED
 #define ENIGME_H_INCLUDED
 #include "header.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
