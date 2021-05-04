@@ -1,34 +1,20 @@
-/** 
-* @file enigme.c
-* @brief testing
-* @author volta
-* @version 0.1 
-* @date Apr 20, 2021  
-*/
+
 
 #include "header.h"
+#include "enigme.h"
 
-
-
-
-/** 
-* @brief To generate enigme
-* @param ch chaine 
-* @param n2 entier alea
-* @return enigme 
-*/ 
 
 enigme generer(char *ch,enigme e,SDL_Surface *screen,int *n2)
 {int i=0;
 
 
-e.colorchoice.r=255; 
-e.colorchoice.g=255; 
-e.colorchoice.b=255; 
+e.colorchoice.r=0; 
+e.colorchoice.g=0; 
+e.colorchoice.b=0; 
 e.police=TTF_OpenFont("font.ttf",19);
 e.texte=TTF_RenderText_Blended(e.police,"(Type A , B , or C)",e.colorchoice); //instructions 
-e.positionFont.x=160; 
-e.positionFont.y= 350; 
+e.positionFont.x=260; 
+e.positionFont.y= 550; 
 SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
 SDL_Flip(screen);
 
@@ -45,13 +31,13 @@ FILE*fichier=NULL;
               i++;
             }
 
-e.colorchoice.r=255; 
-e.colorchoice.g=255; 
-e.colorchoice.b=255;
+e.colorchoice.r=0; 
+e.colorchoice.g=0; 
+e.colorchoice.b=0;
 e.police=TTF_OpenFont("font.ttf",30);
 e.texte=TTF_RenderText_Blended(e.police,e.q,e.colorchoice);//afficher la ligne de la question 
-e.positionFont.x=230; 
-e.positionFont.y= 70; 
+e.positionFont.x=430; 
+e.positionFont.y= 270; 
 SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
 SDL_Flip(screen); 
 
@@ -76,29 +62,29 @@ i=1;
 
 *n2=alea2();
 if(*n2==1)
-{e.positionFont1.x=250; 
-e.positionFont1.y= 130; 
-e.positionFont2.x=250; 
-e.positionFont2.y= 200; 
-e.positionFont3.x=250; 
-e.positionFont3.y= 270;
+{e.positionFont1.x=430; 
+e.positionFont1.y= 330; 
+e.positionFont2.x=430; 
+e.positionFont2.y= 400; 
+e.positionFont3.x=430; 
+e.positionFont3.y= 470;
 }
 else if(*n2==2)
-{e.positionFont1.x=250; 
-e.positionFont1.y= 270; 
-e.positionFont2.x=250; 
-e.positionFont2.y= 130; 
-e.positionFont3.x=250; 
-e.positionFont3.y= 200;
+{e.positionFont1.x=430; 
+e.positionFont1.y= 470; 
+e.positionFont2.x=430; 
+e.positionFont2.y= 330; 
+e.positionFont3.x=430; 
+e.positionFont3.y= 400;
 
 }
 else
-{e.positionFont1.x=250; 
-e.positionFont1.y= 200; 
-e.positionFont2.x=250; 
-e.positionFont2.y= 270; 
-e.positionFont3.x=250; 
-e.positionFont3.y= 130;
+{e.positionFont1.x=430; 
+e.positionFont1.y= 400; 
+e.positionFont2.x=430; 
+e.positionFont2.y= 470; 
+e.positionFont3.x=430; 
+e.positionFont3.y= 330;
 
 }
 
@@ -140,35 +126,35 @@ void afficher(SDL_Surface *screen,enigme e)
 {
 
 
-e.image1=IMG_Load("back.jpg"); //afficher le background
+e.image1=IMG_Load("back1.png"); //afficher le background
 e.positionEcran.x=0; 
 e.positionEcran.y=0; 
 SDL_BlitSurface(e.image1,NULL,screen,&e.positionEcran);
 SDL_Flip(screen); 
 
-e.colorchoice.r=255; 
-e.colorchoice.g=255; 
-e.colorchoice.b=255;  
+e.colorchoice.r=0; 
+e.colorchoice.g=0; 
+e.colorchoice.b=0;  
 e.police=TTF_OpenFont("font.ttf",30); 
 e.texte=TTF_RenderText_Blended(e.police,"A)",e.colorchoice);//a
-e.positionFont.x=220; 
-e.positionFont.y= 130; 
+e.positionFont.x=400; 
+e.positionFont.y= 330; 
 SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
-e.colorchoice.r=255; 
-e.colorchoice.g=255; 
-e.colorchoice.b=255; 
+e.colorchoice.r=0; 
+e.colorchoice.g=0; 
+e.colorchoice.b=0; 
 e.police=TTF_OpenFont("font.ttf",30); 
 e.texte=TTF_RenderText_Blended(e.police,"B)",e.colorchoice);//b
-e.positionFont.x=220; 
-e.positionFont.y= 200; 
+e.positionFont.x=400; 
+e.positionFont.y= 400; 
 SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
-e.colorchoice.r=255; 
-e.colorchoice.g=255; 
-e.colorchoice.b=255;  
+e.colorchoice.r=0; 
+e.colorchoice.g=0; 
+e.colorchoice.b=0;  
 e.police=TTF_OpenFont("font.ttf",30); 
 e.texte=TTF_RenderText_Blended(e.police,"C)",e.colorchoice);//c
-e.positionFont.x=220; 
-e.positionFont.y= 270; 
+e.positionFont.x=400; 
+e.positionFont.y= 470; 
 SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
 SDL_Flip(screen); 
 }

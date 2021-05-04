@@ -3,10 +3,11 @@
 #include "perso.h"
 #include "background.h"
 #include "enigme.h"
-
+#include "lot3.h"
 
 int main()
-{
+{int en,n,f,t,n2; //variables pour engime ghayth
+enigme e; //variables pour engime ghayth
    background b; personne p,p1; ennemi es;
    surface * screen; SDL_Event  event;
    int speed =5; int c=1; int width=1400,height=600;// window size
@@ -14,7 +15,7 @@ int main()
    
    c=init_sdl();
    set_screen_void(&screen,width,height);// setting screen
-   
+  
    
    //init background 
    initialiser_background( &b);
@@ -43,6 +44,15 @@ int main()
    
    
    //---------------********mohamed's perso + pollevents Debut 
+
+
+
+
+TTF_Init(); Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,MIX_DEFAULT_CHANNELS,1024);//enigme ghayth
+
+
+
+
     while(SDL_PollEvent(&event))
    {
     quit_event(&event,&c);
@@ -74,10 +84,134 @@ int main()
                 jump_perso(&p);
                     break ;
                     
-                    case SDLK_a:     
+                    case SDLK_h:    //hamma el a baddalthelak h o yfz 
                    p.direction=2;
                     attack_perso( &p); 
-                   break ;                                             
+                   break ;    
+
+                  case SDLK_e:   //enigme ghayth   
+en=1;
+                   afficher(screen,e);//appel de la 1 ère fonction
+
+n=alea();//prendre un nombre aleatoirement
+switch(n)
+{case 1:
+e=generer("q1.txt",e,screen,&n2);
+break;
+
+case 2:
+e=generer("q2.txt",e,screen,&n2);
+break;
+
+case 3:
+e=generer("q3.txt",e,screen,&n2);
+break;
+
+case 4:
+e=generer("q4.txt",e,screen,&n2);
+break;
+
+}
+
+while(en)//en => continuer
+{ 
+while(SDL_PollEvent(&e.event)) 
+{switch(e.event.type) 
+   { case SDL_QUIT:  
+      en=0;
+       break;
+case SDL_KEYDOWN:  
+     switch(e.event.key.keysym.sym)
+     {
+       case SDLK_ESCAPE : 
+       case SDLK_q: 
+         en=0;   
+       break ;//out
+      
+      case SDLK_a://presser a
+      
+       if(n2==1)
+      {t=1;
+f=0;
+}
+     else {t=0;
+f=1;
+                }    
+      break; 
+      
+      case SDLK_b:    //presser b
+    
+       if(n2==3)
+      {t=1;
+f=0;
+}
+     else {t=0;
+f=1;
+                }    
+      break;
+
+case SDLK_c:    //presser c
+      
+       if(n2==2)
+      {t=1;
+f=0;
+}
+     else {t=0;
+f=1;
+                }       
+break ; 
+}//fin keydown
+
+ 
+}
+}
+
+while(t==1) //right answer
+{
+e.sound=Mix_LoadWAV("win.wav");
+Mix_PlayChannel(-1,e.sound,0);
+e.colorchoice.r=10; 
+e.colorchoice.g=255; 
+e.colorchoice.b=40; 
+e.police=TTF_OpenFont("font.ttf",50);
+e.texte=TTF_RenderText_Blended(e.police,"Good Choice !",e.colorchoice);
+e.positionFont.x=700; 
+e.positionFont.y= 350; 
+SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
+SDL_Flip(screen); 
+SDL_Delay(2500);
+en=0;
+t=0;
+}
+while(f==1) //false answer
+{
+e.sound=Mix_LoadWAV("lose.wav");
+Mix_PlayChannel(-1,e.sound,0);
+e.colorchoice.r=255; 
+e.colorchoice.g=10; 
+e.colorchoice.b=40; 
+e.police=TTF_OpenFont("font.ttf",50);
+e.texte=TTF_RenderText_Blended(e.police,"Bad Choice !",e.colorchoice);
+e.positionFont.x=700; 
+e.positionFont.y= 350; 
+SDL_BlitSurface(e.texte ,NULL,screen,&e.positionFont);
+SDL_Flip(screen); 
+SDL_Delay(2500);
+en=0;
+f=0;
+
+}
+}
+
+free_memory(e.police,e.texte,e.sound);
+
+
+
+                   break ;   //fin enigme ghayth  
+
+
+
+                                         
      }   
      break;
      //*****************KEY UP------------------//
@@ -90,7 +224,7 @@ int main()
                 jump_perso(&p);
                     break ;
                     
-                    case SDLK_a:
+                    case SDLK_h://hamma el a baddalthelak h o yfz mara okhra
                      p.num=0; 
                          
                     break ;
@@ -164,7 +298,9 @@ int main()
      	}   
      break;
        }
-     
+   
+
+
    }  
    deplacer_perso(&p); 
    deplacer_perso(&p1); 
